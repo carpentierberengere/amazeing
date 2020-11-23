@@ -13,7 +13,7 @@ We were asked to create a functionning maze using JavaScript, a HTML squeletton 
 ## What did we do ? 
 
 We created a new [repository](https://github.com/carpentierberengere/amazeing), with an HTML file (***index.html***), a JS file (***maze.js***), and a CSS stylesheet (***maze.css***). 
-Using what we learned earlier (loops, arrays, divs, etc), we created a simple maze, and to make out little guy :red_circle: arrive to the :gift:. 
+Using what we learned earlier (loops, arrays, divs, etc), we created a simple maze, and to make our little guy :red_circle: arrive to the :gift:. 
 
 ## What did we use ? 
 
