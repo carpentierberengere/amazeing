@@ -1,8 +1,10 @@
 # aMAZEing Project - creating a maze
 
 Project made by Bérengère Carpentier :blue_heart:
-Trainee at :office: BeCode 
-Starts 23rd of November, deadline on the 25th of November.
+  
+  Trainee at :office: BeCode 
+  
+  Starts 23rd of November, deadline on the 25th of November.
 
 ## What was asked ?
 
