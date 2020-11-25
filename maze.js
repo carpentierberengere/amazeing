@@ -81,7 +81,7 @@ document.body.addEventListener("keydown", function move(e) {
             document.querySelector("body > main > div:nth-child(" + pos + ")").appendChild(bibi);
             pos+=1;
             document.querySelector("body > main > div:nth-child(27)").removeChild(treasure);
-            alert("YAY YOU FOUND ME!"); //---------MESSAGE POUR LE FINISH------------//
+            alert("You are my only hope!"); //---------MESSAGE POUR LE FINISH------------//
             
         } else {
         document.querySelector("body > main > div:nth-child(" + pos + ")").appendChild(bibi);
@@ -109,3 +109,24 @@ document.body.addEventListener("keydown", function move(e) {
         break;
     }
 });
+
+//let timer = document.createElement("div");
+//timer.classList.add('timer')
+//let seconds = document.createElement("div");
+//let minutes = document.createElement("div");
+//document.body.appendChild(timer);
+//timer.appendChild(seconds);
+//timer.appendChild(minutes);
+
+//let sec = 0;
+//let min = 1 + sec / 60;
+//const inter = setInterval(function () {
+//  seconds.innerHTML = "Number of seconds already spent on this page " + sec++;
+//  if (sec % 60 === 0) {
+//    minutes.innerHTML = min++ + " minute(s) has passed";
+//  }
+//}, 1000);
+
+//body.addEventListener("keydown", move);
+
+//leveling();
