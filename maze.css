@@ -5,7 +5,7 @@ html{
 }
 
 main{
-    width:260px;
+    width:520px;
     display: flex;
     flex-wrap: wrap;
 } 
@@ -18,8 +18,8 @@ main{
 }*/
 
 div{
-    width:20px;
-    height:20px;
+    width:40px;
+    height:40px;
     display: flex;
     text-align: center;
 }
