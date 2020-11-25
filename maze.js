@@ -1,114 +1,111 @@
-//-----------------------------------------------------------//
+const main = document.querySelector("main");
 
-const main = document.querySelector('main')
-main.className = 'main'
+const multiline = 
+`***********.*
+*S.....**.*.T
+*****.....*.*
+*****.***.*.*
+*****.*****.*
+*****.*****.*
+*****.......*
+*****.*******
+*.........***
+*.******...**
+*....********`;
 
-const mur = document.createElement('div')
-mur.className = 'mur'
+multiline.split('\n');
 
-const way = document.createElement('div')
-way.className = 'way'
+for (let i = 0; i < multiline.length; i++) { 
+    const labyrinthe = document.createElement("div");
+    labyrinthe.className = "labyrinthe";
+    main.appendChild(labyrinthe);
 
-const start = document.createElement('div')
-start.className = 'start'
+    labyrinthe.textContent = multiline[i].split('');
 
-const finish = document.createElement('div')
-finish.className = 'finish'
-
-
-//-------------MULTILINE-------------------------------------//
-const multiline = `***********.**S.....**.*.T*****.....*.******.***.*.******.*****.******.*****.******.......******.********.........****.******...***....********`
-
-console.log(multiline.split(' ')) //-------['line1", 'line2', 'line3']------//
-
-console.log(multiline[0].split('')) //------['l', 'i', 'n', 'e', '1]----------//
-
-for (let i=0; i<multiline.length;i++){
-    const ligne = document.createElement('div')
-    ligne.className = 'line'
-
-    if (multiline[i] == '*') {
-        line.className = 'mur'
+    switch (multiline[i]) {
+        case "*":
+            labyrinthe.className = "mur";
+            labyrinthe.textContent = "";
+            break;
+        case ".":
+            labyrinthe.className = "chemin";
+            labyrinthe.textContent = "";
+            break;
+        case "S":
+            labyrinthe.className = "start";
+            labyrinthe.textContent = "";
+            break;
+        case "T":
+            labyrinthe.className = "finish";
+            labyrinthe.textContent = "";
+            break;
+        case '\n': 
+            labyrinthe.style.display = "none";
     }
+};
+
+//----------------------------------------------------PERSONNAGE CREATION BIBI-------------------------------------------------//
+
+const bibi = document.createElement("div");
+bibi.className = "bibi";
+document.querySelector("body > main > div:nth-child(16)").appendChild(bibi);
+
+//---------------------------------------------------TREASURE CREATION POUR LE FINISH LINE-------------------------------------//
+const treasure = document.createElement("div");
+treasure.className = "treasure";
+document.querySelector("body > main > div:nth-child(27)").appendChild(treasure);
+
+//------------------------------------------------------EVENT LISTENER TOUCHE POUR BOUGER R2D2-----------------------------------//
+
+let pos = 16;
+
+document.body.addEventListener("keydown", function move(e) {
     
-    if (multiline[i] == '.') {
-        line.className = 'way'
-    }
-    
-    if (multiline[i] == 'S') {
-        line.className = 'start'
-    }
-    
-    if (multiline[i] == 'T') {
-        line.className = 'finish'
-    }
-
-    main.appendChild(ligne)
-    ligne.appendChild(start)
-
-}
-
-//--------------------CONST JOUEUR--------------------------  //
-
-const character = document.createElement('div')
-character.className = 'bibi'
-document.querySelector("main> div.start").appendChild(character)
-
-//--------------------Labyrinthe------------------------------//
-
-let posX = 15
-
-document.addEventListener('keydown', function(e){
-    if (e.key === 'ArrowRight'){
-        console.log(e)
-        posX++
-        if (document.querySelector('main > div:nth-child('+ posX +')').classList.contains('mur')){
-            posX -= 1
-            document.querySelector('main > div:nth-child('+posX+')').appendChild(character)
-        }else {
-            document.querySelector('main > div:nth-child(' + posX + ')').appendChild(character)
-        }
-    }
-
-    if (e.key === 'ArrowLeft') {
-        console.log(e)
-        posX--
-        if (document.querySelector('main > div:nth-child(' + posX + ')').classList.contains('mur')) {
-            posX += 1
-            document.querySelector('main > div:nth-child(' + posX + ')').appendChild(character)
+    switch (e.code){
+    case "ArrowLeft":
+        pos-=1;
+        if(document.querySelector("body > main > div:nth-child(" + pos + ")").classList.contains("mur")){
+            console.log("NO");
+            pos+=1;
         } else {
-            document.querySelector('main > div:nth-child(' + posX + ')').appendChild(character)
+            document.querySelector("body > main > div:nth-child(" + pos + ")").appendChild(bibi);
         }
+        break;
 
-
-    }
-
-    if (e.key === 'ArrowUp') {
-        console.log(e)
-        posX -= 13
-        if (document.querySelector('main > div:nth-child(' + posX + ')').classList.contains('mur')) {
-            posX += 13
-            document.querySelector('main > div:nth-child(' + posX + ')').appendChild(character)
+    case "ArrowRight":
+        pos+=1;
+        if (document.querySelector("body > main > div:nth-child(" + pos + ")").classList.contains("mur")){
+            console.log("NO NO");
+            pos-=1;
+        } else if (document.querySelector("body > main > div:nth-child(" + pos + ")").classList.contains("finish")){
+            document.querySelector("body > main > div:nth-child(" + pos + ")").appendChild(bibi);
+            pos+=1;
+            document.querySelector("body > main > div:nth-child(27)").removeChild(treasure);
+            alert("YAY YOU FOUND ME!"); //---------MESSAGE POUR LE FINISH------------//
+            
         } else {
-            document.querySelector('main> div:nth-child(' + posX + ')').appendChild(character)
+        document.querySelector("body > main > div:nth-child(" + pos + ")").appendChild(bibi);
         }
+        break;
 
-    }
-
-    if (e.key === 'ArrowDown') {
-        console.log(e)
-        posX += 13
-        if (document.querySelector('main > div:nth-child(' + posX + ')').classList.contains('mur')) {
-            posX -= 13
-            document.querySelector('main > div:nth-child(' + posX + ')').appendChild(character)
-        }else {
-            document.querySelector('main > div:nth-child(' + posX + ')').appendChild(character)
+    case "ArrowUp":
+        pos -= 14;
+        if(document.querySelector("body > main > div:nth-child(" + pos + ")").classList.contains("mur")){
+            console.log("NO NO NO");
+            pos += 14;
+        } else {
+        document.querySelector("body > main > div:nth-child(" + pos + ")").appendChild(bibi);
         }
+        break;
 
-
+    case "ArrowDown":
+        pos += 14;
+        if(document.querySelector("body > main > div:nth-child(" + pos + ")").classList.contains("mur")){
+            console.log("NO NO NO NO");
+            pos -= 14;
+        } else {
+        document.querySelector("body > main > div:nth-child(" + pos + ")").appendChild(bibi);
+        }
+        break;
     }
-
-    if(document.querySelector('main > div:nth-child(' + posX + ')').classList.contains('finish')) {
-        alert('You win!')
-    }
-})
+});

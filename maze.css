@@ -1,0 +1,71 @@
+html{
+    background-color: black;
+    background-image: url(https://cdn.wallpapersafari.com/1/97/co341S.jpg);
+    background-size: 100%;
+}
+
+main{
+    width:260px;
+    display: flex;
+    flex-wrap: wrap;
+} 
+
+/*main{
+    width: 100%;
+    padding-bottom: 100%;
+    position: relative;
+    display:flex
+}*/
+
+div{
+    width:20px;
+    height:20px;
+    display: flex;
+    text-align: center;
+}
+
+.bibi{
+    background-image: url(./images/r2d2.png);
+    background-size: contain; 
+    background-repeat: no-repeat;
+    position: absolute;
+    
+}
+
+.start{
+    background-color: red;
+    background-size: contain;
+}
+
+.finish{
+    background-image: url(./images/bb8.png);
+    background-color: seagreen;
+    background-size: contain;
+    
+}
+
+.chemin{
+    background-image: url(./images/spaceshipfloor.png);
+    background-color: #B9B9B9;
+    background-size: contain;
+    
+}
+
+.mur{
+    background-image: url(./images/spaceship.png);
+    background-color: #454545;
+    background-size: contain;
+    /*width: 50px;
+    height: 50px;
+    text-align: center;*/
+}
+
+.treasure{
+    background-image: url(./images/leia.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: absolute;
+    /*width: 50px;
+    height: 50px;
+    text-align: center;*/
+}
